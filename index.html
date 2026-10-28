@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dép Tổ Ong Quantum-X - Kiệt Tác Công Nghệ Thay Đổi Nhân Loại</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            cyber: {
+              black: '#08090d',
+              card: '#12151e',
+              neon: '#00f0ff',
+              gold: '#ffd700',
+              yellow: '#ffcc00',
+              pink: '#ff0055',
+              green: '#00ff66'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Be Vietnam Pro', 'sans-serif']
+          },
+          animation: {
+            'pulse-glow': 'pulseGlow 2s infinite alternate',
+            'float': 'float 4s ease-in-out infinite',
+            'spin-slow': 'spin 12s linear infinite'
+          },
+          keyframes: {
+            pulseGlow: {
+              '0%': { boxShadow: '0 0 15px rgba(0, 240, 255, 0.4)' },
+              '100%': { boxShadow: '0 0 35px rgba(0, 240, 255, 0.9)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-12px) rotate(2deg)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background-color: #08090d;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* Custom Glassmorphism */
+    .glass-panel {
+      background: rgba(18, 21, 30, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .glass-panel-gold {
+      background: rgba(255, 215, 0, 0.05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .neon-text-cyan {
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
+    }
+
+    .neon-text-gold {
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    .neon-border-cyan {
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f293d;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00f0ff;
+    }
+
+    /* Grid canvas overlay */
+    .cyber-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="cyber-grid min-h-screen selection:bg-cyan-500 selection:text-black">
+
+  <!-- TOP TICKER / BANNER -->
+  <div class="bg-gradient-to-r from-yellow-600 via-amber-500 to-yellow-600 text-black py-2 px-4 text-xs md:text-sm font-bold text-center flex justify-between items-center z-50 relative overflow-hidden">
+    <div class="animate-marquee whitespace-nowrap flex items-center justify-center gap-6 w-full">
+      <span>🔥 CẢNH BÁO IPO: Cổ phiếu QUANTUM-X đã đạt mốc 98.4% lượt đăng ký đặt trước!</span>
+      <span class="hidden md:inline">💎 Định giá Unicorn: $100,000,000,000 USD</span>
+      <span>🚀 Đội ngũ NASA & Quán Trà Đá Đầu Xóm khuyên dùng!</span>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-40 glass-panel border-b border-slate-800 px-4 lg:px-8 py-3 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-500 to-cyan-400 p-0.5 flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+            <span class="text-2xl">🩴</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-black text-xl tracking-wider text-white flex items-center gap-1">
+            QUANTUM<span class="text-yellow-400">-X</span>
+          </span>
+          <span class="text-[9px] text-cyan-400 uppercase tracking-widest block font-bold">Unicorn Tech Slipper</span>
+        </div>
+      </a>
+
+      <!-- Menu links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#visualizer" class="hover:text-cyan-400 transition-colors">Thiết Kế 3D</a>
+        <a href="#features" class="hover:text-cyan-400 transition-colors">Siêu Công Nghệ</a>
+        <a href="#valuation" class="hover:text-yellow-400 transition-colors">Đầu Tư IPO ($100B)</a>
+        <a href="#reviews" class="hover:text-cyan-400 transition-colors">Đánh Giá VIP</a>
+      </div>
+
+      <!-- Audio Toggle & CTA -->
+      <div class="flex items-center gap-3">
+        <button id="soundToggle" onclick="toggleAudio()" class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-400 transition-all border border-cyan-500/30" title="Bật/Tắt âm thanh tương lai">
+          <i class="fas font-solid fa-volume-xmark" id="soundIcon"></i>
+        </button>
+        <button onclick="openModal('order')" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 hover:from-yellow-400 hover:to-amber-300 text-slate-950 font-bold text-sm shadow-lg shadow-yellow-500/20 hover:scale-105 transition-all">
+          <i class="fas fa-bolt"></i> Pre-Order IPO
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden">
+    <!-- Glowing background elements -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-1/3 right-10 w-[300px] h-[300px] bg-yellow-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+      <div class="text-center max-w-3xl mx-auto">
+        <!-- Glowing Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel-gold border-yellow-500/40 text-yellow-300 text-xs md:text-sm font-semibold mb-6 animate-bounce">
+          <span class="w-2 h-2 rounded-full bg-yellow-400 animate-ping"></span>
+          🦄 SIÊU PHẨM UNICORN IPO TRỊ GIÁ 100 TỶ ĐÔ LA TƯƠNG LAI
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-6">
+          DÉP TỔ ONG <br>
+          <span class="bg-gradient-to-r from-cyan-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent neon-text-cyan">
+            QUANTUM-X
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-2xl text-slate-300 font-light mb-8 leading-relaxed">
+          "Xỏ chân vào tương lai, bước đi trong hoài niệm!" 🚀💸<br>
+          <span class="text-sm md:text-base text-slate-400 mt-2 block">
+            Trong khi thế giới chạy theo AI & Kính VR, chúng tôi định nghĩa lại định luật vạn vật hấp dẫn bằng 100% nhựa dẻo lượng tử!
+          </span>
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="openModal('order')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-black text-base tracking-wide shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
+            <i class="fas fa-cart-shopping"></i> ĐẶT MUA NGAY (PRE-ORDER IPO)
+          </button>
+          <button onclick="openModal('invest')" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel-gold border-yellow-500/50 hover:bg-yellow-500/20 text-yellow-300 font-bold text-base tracking-wide hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
+            <i class="fas fa-chart-line text-yellow-400"></i> ĐẦU TƯ THIÊN SỨ (ANGEL INVESTOR)
+          </button>
+        </div>
+
+        <!-- Quick stats bar -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 p-4 rounded-2xl glass-panel border-slate-800/80">
+          <div class="text-center p-2">
+            <div class="text-2xl lg:text-3xl font-black text-cyan-400">0.0001s</div>
+            <div class="text-xs text-slate-400">Độ trễ AI Làm Mát</div>
+          </div>
+          <div class="text-center p-2 border-l border-slate-800">
+            <div class="text-2xl lg:text-3xl font-black text-yellow-400">99.9%</div>
+            <div class="text-xs text-slate-400">Biên Lợi Nhuận Ròng</div>
+          </div>
+          <div class="text-center p-2 border-l border-slate-800">
+            <div class="text-2xl lg:text-3xl font-black text-emerald-400">5G GPS</div>
+            <div class="text-xs text-slate-400">Báo Động Mất Dép</div>
+          </div>
+          <div class="text-center p-2 border-l border-slate-800">
+            <div class="text-2xl lg:text-3xl font-black text-pink-500">&infin;</div>
+            <div class="text-xs text-slate-400">Chỉ Số Hoài Niệm Tuổi Thơ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE VISUALIZER SECTION -->
+  <section id="visualizer" class="py-16 bg-slate-950/60 relative border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-xs text-cyan-400 font-bold uppercase tracking-widest mb-2">Trải Nghiệm Trực Quan 3D</h2>
+        <h3 class="text-3xl lg:text-4xl font-black text-white">SƠ ĐỒ NĂNG LƯỢNG LƯỢNG TỬ</h3>
+        <p class="text-slate-400 text-sm mt-2">Nhấp vào các điểm nóng (Hotspots) trên chiếc dép để khám phá công nghệ lõi</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Interactive Canvas / Visual Representation -->
+        <div class="lg:col-span-7 relative flex flex-col items-center justify-center p-6 lg:p-12 glass-panel rounded-3xl border-slate-800 overflow-hidden min-h-[420px]">
+          
+          <!-- Hologram rings -->
+          <div class="absolute w-80 h-80 border border-cyan-500/20 rounded-full animate-spin-slow pointer-events-none"></div>
+          <div class="absolute w-96 h-96 border border-dashed border-yellow-500/20 rounded-full pointer-events-none"></div>
+
+          <!-- Color Customizer Options -->
+          <div class="absolute top-4 left-4 z-20 flex flex-col gap-2">
+            <span class="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Màu Phiên Bản</span>
+            <div class="flex gap-2">
+              <button onclick="changeSlipperColor('yellow')" class="w-8 h-8 rounded-full bg-yellow-400 border-2 border-white/80 hover:scale-110 transition-transform shadow-md" title="Vàng Huyền Thoại (Classic Yellow)"></button>
+              <button onclick="changeSlipperColor('cyan')" class="w-8 h-8 rounded-full bg-cyan-400 border-2 border-slate-800 hover:scale-110 transition-transform shadow-md" title="Cyber Neon"></button>
+              <button onclick="changeSlipperColor('gold')" class="w-8 h-8 rounded-full bg-amber-500 border-2 border-slate-800 hover:scale-110 transition-transform shadow-md" title="Galactic Gold (Mạ Vàng 24K)"></button>
+              <button onclick="changeSlipperColor('black')" class="w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-600 hover:scale-110 transition-transform shadow-md" title="Phantom Black"></button>
+            </div>
+          </div>
+
+          <!-- Slipper SVG Visualizer -->
+          <div class="relative w-full max-w-md h-72 flex items-center justify-center animate-float my-6">
+            <svg id="slipperSvg" class="w-full h-full drop-shadow-[0_20px_35px_rgba(0,240,255,0.3)] transition-all duration-500" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Slipper Sole Base -->
+              <path id="slipperSole" d="M 60 170 C 60 110, 140 100, 260 110 C 380 120, 440 130, 450 180 C 460 230, 390 260, 260 255 C 130 250, 60 230, 60 170 Z" fill="#ffcc00" stroke="#e6b800" stroke-width="6"/>
+              
+              <!-- Bottom Sole Layer (Quantum-Foam) -->
+              <path id="slipperFoam" d="M 60 195 C 60 215, 130 255, 260 260 C 390 265, 450 225, 450 195 C 440 215, 380 245, 260 240 C 140 235, 60 215, 60 195 Z" fill="#333" opacity="0.8"/>
+              
+              <!-- Honeycomb Holes (Bio-Ventilation AI) -->
+              <g id="honeycombHoles" fill="#3a2e00" opacity="0.8">
+                <!-- Row 1 -->
+                <circle cx="150" cy="140" r="7"/> <circle cx="180" cy="142" r="7"/> <circle cx="210" cy="145" r="7"/> <circle cx="240" cy="148" r="7"/> <circle cx="270" cy="150" r="7"/>
+                <!-- Row 2 -->
+                <circle cx="135" cy="160" r="7"/> <circle cx="165" cy="162" r="7"/> <circle cx="195" cy="165" r="7"/> <circle cx="225" cy="168" r="7"/> <circle cx="255" cy="170" r="7"/> <circle cx="285" cy="172" r="7"/>
+                <!-- Row 3 -->
+                <circle cx="150" cy="180" r="7"/> <circle cx="180" cy="182" r="7"/> <circle cx="210" cy="185" r="7"/> <circle cx="240" cy="188" r="7"/> <circle cx="270" cy="190" r="7"/>
+                <!-- Row 4 -->
+                <circle cx="165" cy="202" r="7"/> <circle cx="195" cy="205" r="7"/> <circle cx="225" cy="208" r="7"/> <circle cx="255" cy="210" r="7"/>
+              </g>
+
+              <!-- Strap Upper (Quai Dép) -->
+              <path id="slipperStrap" d="M 120 120 C 140 60, 280 60, 320 130 C 260 110, 180 100, 120 120 Z" fill="#e6b800" stroke="#b38f00" stroke-width="4"/>
+
+              <!-- GPS Chip Node -->
+              <circle cx="390" cy="180" r="12" fill="#00f0ff" class="animate-pulse"/>
+              <circle cx="390" cy="180" r="6" fill="#ffffff"/>
+
+              <!-- Family Sync Heart Node -->
+              <circle cx="220" cy="90" r="10" fill="#ff0055" class="animate-pulse"/>
+            </svg>
+
+            <!-- HOTSPOTS (Clickable Overlay Buttons) -->
+            <!-- Hotspot 1: Quantum Sole -->
+            <button onclick="selectHotspot(0)" class="absolute bottom-6 left-12 w-8 h-8 rounded-full bg-cyan-500/80 text-white font-bold border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform animate-pulse" title="Đế Đệm Lượng Tử">1</button>
+            
+            <!-- Hotspot 2: AI Vent -->
+            <button onclick="selectHotspot(1)" class="absolute top-1/2 left-1/3 w-8 h-8 rounded-full bg-yellow-500/80 text-black font-bold border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform animate-pulse" title="AI Tự Làm Mát">2</button>
+            
+            <!-- Hotspot 3: GPS Chip -->
+            <button onclick="selectHotspot(2)" class="absolute top-1/2 right-12 w-8 h-8 rounded-full bg-emerald-500/80 text-white font-bold border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform animate-pulse" title="Chip Định Vị Sandal-Link 5G">3</button>
+
+            <!-- Hotspot 4: Family Sync Sensor -->
+            <button onclick="selectHotspot(3)" class="absolute top-8 left-1/2 w-8 h-8 rounded-full bg-pink-500/80 text-white font-bold border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform animate-pulse" title="Cảm Biến Gia Đình">4</button>
+
+            <!-- Hotspot 5: Pheromone Memory -->
+            <button onclick="selectHotspot(4)" class="absolute bottom-12 right-1/3 w-8 h-8 rounded-full bg-purple-500/80 text-white font-bold border-2 border-white shadow-lg flex items-center justify-center hover:scale-125 transition-transform animate-pulse" title="Hương Thơm Ký Ức">5</button>
+          </div>
+
+          <p class="text-xs text-slate-500 italic mt-2">Mô hình giả lập năng lượng hạt nhân nano tiêu chuẩn ISO-9001</p>
+        </div>
+
+        <!-- Hotspot Info Panel -->
+        <div class="lg:col-span-5 glass-panel p-6 lg:p-8 rounded-3xl border-slate-800">
+          <div id="hotspotBadge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-400 mb-3 border border-cyan-500/30">
+            CÔNG NGHỆ LÕI #1
+          </div>
+          <h3 id="hotspotTitle" class="text-2xl font-black text-white mb-3">
+            Đế Đệm Lượng Tử (Quantum-Foam Sole)
+          </h3>
+          <p id="hotspotDesc" class="text-slate-300 text-sm leading-relaxed mb-6 min-h-[90px]">
+            Tích hợp công nghệ giảm xóc hạt nhân nano, phân tán 100% lực tác động từ mặt đất. Bạn có thể bước đi trên đinh nhọn, đá dăm hay lòng người đổi thay mà cảm giác vẫn êm ái như đang lướt trên mây mù Đà Lạt.
+          </p>
+
+          <div class="space-y-3 border-t border-slate-800 pt-4">
+            <div class="flex justify-between text-xs">
+              <span class="text-slate-400">Chỉ số hấp thụ lực tác động:</span>
+              <span class="text-cyan-400 font-bold">100.0% Nano-Tech</span>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2">
+              <div id="hotspotBar" class="bg-cyan-400 h-2 rounded-full transition-all duration-500" style="width: 100%"></div>
+            </div>
+          </div>
+
+          <!-- Hotspot Switch Buttons -->
+          <div class="grid grid-cols-5 gap-2 mt-6 pt-4 border-t border-slate-800/60">
+            <button onclick="selectHotspot(0)" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors">#1</button>
+            <button onclick="selectHotspot(1)" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors">#2</button>
+            <button onclick="selectHotspot(2)" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors">#3</button>
+            <button onclick="selectHotspot(3)" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors">#4</button>
+            <button onclick="selectHotspot(4)" class="p-2 rounded-lg bg-slate-800 hover:bg-cyan-500/20 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors">#5</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES BREAKDOWN SECTION -->
+  <section id="features" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs text-yellow-400 font-bold uppercase tracking-widest mb-2">Tính Năng Độc Quyền</h2>
+        <h3 class="text-3xl lg:text-5xl font-black text-white">
+          SỰ KẾT HỢP GIỮA <span class="text-cyan-400">SIÊU CÔNG NGHỆ</span> & <span class="text-yellow-400">TRÁI TIM HOÀI NIỆM</span>
+        </h3>
+      </div>
+
+      <!-- Feature Category 1: Quantum Tech -->
+      <div class="mb-16">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xl">
+            <i class="fas fa-atom"></i>
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-white">1. Đỉnh Cao Công Nghệ Đa Chiều (Quantum Tech)</h4>
+            <p class="text-xs text-slate-400">Chuẩn hóa cho các phi hành gia và dân chơi trà đá chuyên nghiệp</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-slate-950 font-black text-xl mb-6 shadow-lg shadow-cyan-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-feather-pointed"></i>
+            </div>
+            <h5 class="text-xl font-bold text-white mb-3">Đế Đệm Lượng Tử</h5>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Tích hợp công nghệ giảm xóc hạt nhân nano, phân tán 100% lực tác động từ mặt đất. Bước đi trên đinh nhọn, đá dăm hay <i>lòng người đổi thay</i> vẫn êm ái như lướt trên mây Đà Lạt.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center text-slate-950 font-black text-xl mb-6 shadow-lg shadow-yellow-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-wind"></i>
+            </div>
+            <h5 class="text-xl font-bold text-white mb-3">Tự Làm Mát AI (Bio-Ventilation)</h5>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Hàng trăm lỗ tổ ong lập trình bằng AI lượng tử, tự điều chỉnh lưu lượng gió theo thân nhiệt. Chấm dứt hoàn toàn nỗi đau "viêm màng túi vì mùi hương lạ" mùa hè!
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/50 transition-all hover:-translate-y-1 group">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center text-slate-950 font-black text-xl mb-6 shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-satellite-dish"></i>
+            </div>
+            <h5 class="text-xl font-bold text-white mb-3">Chip Sandal-Link 5G</h5>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Không lo mất dép ở quán trà đá hay đám cưới làng. Chip GPS độc lập tự động phát tín hiệu SOS về Smartphone nếu ai đó có ý đồ "cầm nhầm" kiệt tác này.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Category 2: Emotional Intelligence -->
+      <div>
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-3 rounded-xl bg-pink-500/10 text-pink-400 border border-pink-500/30 text-xl">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-white">2. Trái Tim Cảm Xúc & Hoài Niệm (Emotional Intelligence)</h4>
+            <p class="text-xs text-slate-400">Kết nối tâm hồn và thắp sáng tình cảm gia đình Việt</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 4 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-pink-500/50 transition-all hover:-translate-y-1 group relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-pink-500/10 rounded-full blur-2xl"></div>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white font-black text-xl mb-6 shadow-lg shadow-pink-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h5 class="text-xl font-bold text-white mb-3">Cảm Biến Thấu Cảm Gia Đình (Family-Sync)</h5>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Nhận diện mệt mỏi qua nhịp đập bàn chân, nhẹ nhàng phát xung điện châm cứu huyệt đạo. Đồng thời tự gửi tin nhắn nhắn nhủ: <i>"Chồng/Vợ ơi, hãy nghỉ ngơi nhé!"</i> tới nửa kia.
+            </p>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-purple-500/50 transition-all hover:-translate-y-1 group relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-500/10 rounded-full blur-2xl"></div>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white font-black text-xl mb-6 shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-spa"></i>
+            </div>
+            <h5 class="text-xl font-bold text-white mb-3">Hương Thơm Ký Ức (Pheromone Memory)</h5>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Tẩm tinh hương lá dứa kết hợp nhựa dẻo nguyên bản thập niên 90. Xỏ chân vào là mọi áp lực tan biến, đưa tâm hồn trở về khoảnh khắc thơ bé bên hiên nhà ngập nắng với mẹ bà.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- IPO INVESTOR & ROI CALCULATOR SECTION -->
+  <section id="valuation" class="py-20 bg-slate-950 relative border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      
+      <!-- Forbes Quote Box -->
+      <div class="max-w-4xl mx-auto glass-panel-gold p-8 md:p-12 rounded-3xl text-center mb-20 relative">
+        <i class="fas fa-quote-left text-4xl text-yellow-500/30 absolute top-6 left-6"></i>
+        <p class="text-lg md:text-2xl text-yellow-200 font-serif italic mb-6 leading-relaxed">
+          "Quantum-X không chỉ là một đôi dép. Nó là tấm vé thông hành đưa loài người bước sang chiều không gian của sự thoải mái tối thượng và tình mẫu tử thiêng liêng."
+        </p>
+        <div class="font-bold text-yellow-400 text-sm tracking-wider uppercase">
+          — Tạp chí Forbes & NASA đồng kính bút —
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Column: Valuation Pitch -->
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400 text-xs font-bold mb-4 border border-yellow-500/30">
+            <i class="fas fa-crown"></i> UNICORN VALUATION METRICS
+          </div>
+          <h3 class="text-3xl lg:text-5xl font-black text-white mb-6">
+            TẠI SAO XỨNG ĐÁNG IPO <span class="text-yellow-400">$100 TỶ USD</span>?
+          </h3>
+          <p class="text-slate-300 text-base leading-relaxed mb-6">
+            Một mô hình kinh doanh không thể bị đánh bại bởi bất kỳ đối thủ Silicon Valley nào. Chúng tôi nắm giữ bí mật của sự kết hợp hoàn hảo giữa vật lý lượng tử và ký ức tuổi thơ.
+          </p>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs mt-1 shrink-0">✓</div>
+              <div>
+                <strong class="text-white">Thị Trường Vô Cực (&infin;):</strong>
+                <span class="text-slate-400 text-sm block">8 tỷ người trên Trái Đất đều có bàn chân và đều cần được bảo vệ khỏi gai nhọn cuộc đời.</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs mt-1 shrink-0">✓</div>
+              <div>
+                <strong class="text-white">Biên Lợi Nhuận Ròng 99.9%:</strong>
+                <span class="text-slate-400 text-sm block">Bởi vì tình yêu thương, hoài niệm và giá trị tinh thần thì không bao giờ có thể định giá bằng tiền mặt!</span>
+              </div>
+            </li>
+          </ul>
+
+          <button onclick="openModal('invest')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-slate-950 font-black text-base shadow-lg shadow-yellow-500/20 transition-all flex items-center gap-3">
+            <i class="fas fa-hand-holding-dollar"></i> THAM GIA ĐỢT PHÁT HÀNH CỔ PHIẾU ANGEL
+          </button>
+        </div>
+
+        <!-- Right Column: Interactive ROI Calculator -->
+        <div class="lg:col-span-6 glass-panel p-8 rounded-3xl border-slate-800">
+          <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+            <i class="fas fa-calculator text-cyan-400"></i> Máy Tính Dự Đoán Lợi Nhuận Đầu Tư
+          </h4>
+          <p class="text-slate-400 text-xs mb-6">Kéo thanh trượt để tính toán chỉ số hạnh phúc và lợi nhuận cổ tức</p>
+
+          <!-- Input Slider -->
+          <div class="mb-6">
+            <div class="flex justify-between text-sm font-bold mb-2">
+              <span class="text-slate-300">Số tiền bạn muốn đầu tư:</span>
+              <span id="investmentVal" class="text-cyan-400 text-lg">$1,000 USD</span>
+            </div>
+            <input type="range" id="investRange" min="100" max="10000" step="100" value="1000" oninput="updateROICalculator(this.value)" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
+            <div class="flex justify-between text-[10px] text-slate-500 mt-1">
+              <span>$100 (1 Đôi Dép)</span>
+              <span>$5,000 (Quán Trà Đá)</span>
+              <span>$10,000 (Cổ Đông Chiến Lược)</span>
+            </div>
+          </div>
+
+          <!-- Predicted Yield Display -->
+          <div class="space-y-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800/80">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Dự đoán Cổ Tức Lượng Tử (2027):</span>
+              <span id="roiProfit" class="text-xl font-black text-emerald-400">$999,000 USD</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Chỉ số Hoài Niệm & Hạnh Phúc:</span>
+              <span id="roiHappiness" class="text-sm font-bold text-yellow-400">+9,900 %</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-slate-400">Số lượng Dép Tặng Kèm Tận Giường:</span>
+              <span id="roiSlippers" class="text-sm font-bold text-cyan-400">10 Đôi Lượng Tử</span>
+            </div>
+          </div>
+
+          <p class="text-[10px] text-slate-500 mt-4 text-center italic">
+            *Lưu ý: Mọi dự báo tài chính đã được xác thực bởi thuật toán tâm linh lượng tử.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="reviews" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs text-cyan-400 font-bold uppercase tracking-widest mb-2">Đánh Giá Từ Chuyên Gia</h2>
+        <h3 class="text-3xl lg:text-4xl font-black text-white">NHỮNG KHÁCH HÀNG VIP NÓI GÌ?</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="glass-panel p-6 rounded-2xl border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex text-yellow-400 text-xs mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6">
+              "Tôi dự định dùng CyberTruck để đưa người lên Hỏa Tinh, nhưng từ khi mang Quantum-X, tôi nhận ra chỉ cần nhảy nhẹ một cái là đã lên tới quỹ đạo rồi!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center font-bold text-white">EM</div>
+            <div>
+              <div class="text-sm font-bold text-white">Elon Musk (Giả lập)</div>
+              <div class="text-[10px] text-slate-400">CEO SpaceX & X</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="glass-panel p-6 rounded-2xl border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex text-yellow-400 text-xs mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6">
+              "Trước đây dép tổ ong ở quán tôi hay bị khách xỏ nhầm. Từ ngày có Sandal-Link 5G, còi báo động kêu vang mỗi khi có ai đi cách quán 5m. Quá tuyệt vời!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center font-bold text-white">TĐ</div>
+            <div>
+              <div class="text-sm font-bold text-white">Chú Bảy Trà Đá</div>
+              <div class="text-[10px] text-slate-400">Chủ Chuỗi Trà Đá Đầu Xóm</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="glass-panel p-6 rounded-2xl border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex text-yellow-400 text-xs mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6">
+              "Chúng tôi đã phân tích chất liệu nhựa dẻo lượng tử này. Nó vượt xa các tiêu chuẩn vật liệu không gian hiện tại của NASA. 10/10 điểm!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-cyan-600 flex items-center justify-center font-bold text-white">NS</div>
+            <div>
+              <div class="text-sm font-bold text-white">Dr. John Doe</div>
+              <div class="text-[10px] text-slate-400">Kỹ Sư Lõi NASA</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="glass-panel p-6 rounded-2xl border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex text-yellow-400 text-xs mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="text-slate-300 text-sm italic mb-6">
+              "Nó có mùi lá dứa thơm phức hệt như chiếc dép bà mua cho cháu năm 1995. Bà chấm đôi này 100 điểm vì cháu bà mang đi học không lo bị vấp ngã!"
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-800">
+            <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center font-bold text-white">BN</div>
+            <div>
+              <div class="text-sm font-bold text-white">Bà Nội U90</div>
+              <div class="text-[10px] text-slate-400">Chuyên Gia Hoài Niệm</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / FOOTER BANNER -->
+  <section class="py-16 bg-gradient-to-b from-slate-950 to-black text-center relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 lg:px-8 relative z-10">
+      <h2 class="text-3xl sm:text-5xl font-black text-white mb-6">
+        SẴN SÀNG BƯỚC VÀO TƯƠNG LAI?
+      </h2>
+      <p class="text-slate-400 text-base max-w-2xl mx-auto mb-8">
+        Đừng để đôi chân bạn phải chịu đựng trọng lực thông thường thêm một ngày nào nữa. Hãy sở hữu ngay Quantum-X ngay hôm nay!
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <button onclick="openModal('order')" class="px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-black text-base shadow-xl shadow-yellow-500/20 hover:scale-105 transition-all">
+          🚀 ĐẶT MUA PRE-ORDER IPO NGAY
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-black py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        © 2026 QUANTUM-X INC. BẢO LƯU MỌI QUYỀN LƯỢNG TỬ & HOÀI NIỆM.
+      </div>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-slate-300">Điều Khoản IPO</a>
+        <a href="#" class="hover:text-slate-300">Bảo Mật GPS 5G</a>
+        <a href="#" class="hover:text-slate-300">Quán Trà Đá Partner</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL FOR PRE-ORDER & INVEST -->
+  <div id="modalBackdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-lg rounded-3xl border-slate-700 p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+      
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl p-2">
+        <i class="fas fa-xmark"></i>
+      </button>
+
+      <!-- ORDER FORM -->
+      <div id="modalOrderContent">
+        <div class="text-center mb-6">
+          <span class="text-xs text-yellow-400 font-bold tracking-widest uppercase">Đăng ký mua trước</span>
+          <h3 class="text-2xl font-black text-white mt-1">SỞ HỮU QUANTUM-X IPO</h3>
+        </div>
+
+        <form onsubmit="handleFormSubmit(event, 'order')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Họ và Tên</label>
+            <input type="text" required placeholder="Nguyễn Văn A" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Số Điện Thoại (Nhận tin nhắn SOS GPS)</label>
+            <input type="tel" required placeholder="0987654321" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Kích Thước Dép (Size)</label>
+              <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option>Size 38 - Tương Lai</option>
+                <option>Size 39 - Lượng Tử</option>
+                <option selected>Size 40 - Chuẩn Trà Đá</option>
+                <option>Size 41 - Vũ Trụ</option>
+                <option>Size 42 - Vô Cực</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1">Màu Sắc SẮC MÀU</label>
+              <select id="modalColorSelect" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option value="yellow">Vàng Huyền Thoại</option>
+                <option value="cyan">Cyber Neon</option>
+                <option value="gold">Galactic Gold (Mạ Vàng)</option>
+                <option value="black">Phantom Black</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Tùy Chọn Thêu Tên Kỷ Niệm (Miễn Phí)</label>
+            <input type="text" placeholder="Ví dụ: Vua Trà Đá 2026" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Phương Thức Thanh Toán Tương Lai</label>
+            <select class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400">
+              <option>Thanh toán khi nhận hàng (COD)</option>
+              <option>Ví MoMo / ZaloPay</option>
+              <option>Trà Đá Token (TDT)</option>
+              <option>Tiền mã hóa (Crypto / USDT)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-600 font-bold text-slate-950 text-sm hover:opacity-90 transition-opacity mt-4 shadow-lg shadow-cyan-500/20">
+            XÁC NHẬN ĐẶT HÀNG PRE-ORDER ($99 USD / Đôi)
+          </button>
+        </form>
+      </div>
+
+      <!-- INVESTOR FORM -->
+      <div id="modalInvestContent" class="hidden">
+        <div class="text-center mb-6">
+          <span class="text-xs text-yellow-400 font-bold tracking-widest uppercase">Gia nhập Hội Cổ Đông Thiên Sứ</span>
+          <h3 class="text-2xl font-black text-white mt-1">ĐẦU TƯ CỔ PHẦN QUANTUM-X</h3>
+        </div>
+
+        <form onsubmit="handleFormSubmit(event, 'invest')" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Họ Tên Nhà Đầu Tư / Quỹ Đầu Tư</label>
+            <input type="text" required placeholder="Quỹ Đầu Tư Trà Đá Capital" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-400">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Email Doanh Nghiệp / Cá Nhân</label>
+            <input type="email" required placeholder="investor@tradacapital.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-400">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Mức Vốn Cam Kết Đầu Tư ($USD)</label>
+            <input type="number" min="100" step="100" value="1000" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-400">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Lời Nhắn Gửi Tới Đội Ngũ Sáng Tạo</label>
+            <textarea rows="3" placeholder="Tôi muốn tài trợ 1000 đôi dép cho các quán trà đá toàn quốc..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-400"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 font-bold text-slate-950 text-sm hover:opacity-90 transition-opacity mt-4 shadow-lg shadow-yellow-500/20">
+            XÁC NHẬN CAM KẾT RÓT VỐN ANGEL
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SUCCESS TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 glass-panel-gold border-yellow-500 p-4 rounded-2xl shadow-2xl hidden flex items-center gap-3 animate-bounce">
+    <div class="text-2xl">🎉</div>
+    <div>
+      <div id="toastTitle" class="text-sm font-bold text-yellow-300">Thành công!</div>
+      <div id="toastMessage" class="text-xs text-slate-300">Đơn hàng của bạn đã được ghi nhận vào sổ cái Lượng Tử.</div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT INTERACTIVE LOGIC -->
+  <script>
+    // Hotspots details data
+    const hotspotsData = [
+      {
+        badge: "CÔNG NGHỆ LÕI #1",
+        title: "Đế Đệm Lượng Tử (Quantum-Foam Sole)",
+        desc: "Tích hợp công nghệ giảm xóc hạt nhân nano, phân tán 100% lực tác động từ mặt đất. Bạn có thể bước đi trên đinh nhọn, đá dăm hay lòng người đổi thay mà cảm giác vẫn êm ái như đang lướt trên mây mù Đà Lạt.",
+        percent: "100.0% Nano-Tech",
+        barWidth: "100%"
+      },
+      {
+        badge: "CÔNG NGHỆ LÕI #2",
+        title: "Hệ Thống Tự Làm Mát AI (Bio-Ventilation)",
+        desc: "Hàng trăm lỗ tổ ong trên mặt dép được lập trình bằng trí tuệ nhân tạo lượng tử, tự động điều chỉnh lưu lượng gió dựa trên thân nhiệt bàn chân. Chấm dứt hoàn toàn nỗi đau mùi hương lạ!",
+        percent: "0.0001s Phản Ứng",
+        barWidth: "98%"
+      },
+      {
+        badge: "CÔNG NGHỆ LÕI #3",
+        title: "Chip Định Vị Vạn Vật (Sandal-Link 5G)",
+        desc: "Không bao giờ sợ mất dép ở quán trà đá hay đám cưới làng nữa. Tích hợp chip GPS độc lập, tự động phát tín hiệu SOS về điện thoại nếu có kẻ gian có ý đồ 'cầm nhầm'.",
+        percent: "Phủ sóng 5G Toàn Cầu",
+        barWidth: "95%"
+      },
+      {
+        badge: "CÔNG NGHỆ LÕI #4",
+        title: "Cảm Biến Thấu Cảm Gia Đình (Family-Sync)",
+        desc: "Khi bạn mệt mỏi sau giờ làm việc, chiếc dép nhẹ nhàng phát xung điện châm cứu kích thích huyệt đạo, đồng thời tự động gửi thông báo yêu thương: 'Chồng/Vợ ơi, hãy nghỉ ngơi nhé!'",
+        percent: "Đồng bộ Huyệt Đạo 100%",
+        barWidth: "92%"
+      },
+      {
+        badge: "CÔNG NGHỆ LÕI #5",
+        title: "Hương Thơm Ký Ức (Pheromone Memory)",
+        desc: "Được tẩm tinh hương lá dứa kết hợp với mùi nhựa dẻo nguyên bản thập niên 90. Chỉ cần xỏ chân vào, mọi áp lực cuộc sống hiện đại sẽ tan biến, đưa tâm hồn bạn trở về khoảnh khắc thơ bé bên hiên nhà.",
+        percent: "&infin; Chỉ số Hoài Niệm",
+        barWidth: "100%"
+      }
+    ];
+
+    // Function to select hotspot
+    function selectHotspot(index) {
+      playSound(600 + index * 100, 'sine');
+      const data = hotspotsData[index];
+      document.getElementById('hotspotBadge').innerText = data.badge;
+      document.getElementById('hotspotTitle').innerText = data.title;
+      document.getElementById('hotspotDesc').innerText = data.desc;
+      document.getElementById('hotspotBar').style.width = data.barWidth;
+    }
+
+    // Function to change slipper visualizer color
+    function changeSlipperColor(colorKey) {
+      playSound(800, 'triangle');
+      const sole = document.getElementById('slipperSole');
+      const strap = document.getElementById('slipperStrap');
+      const holes = document.getElementById('honeycombHoles');
+
+      if (colorKey === 'yellow') {
+        sole.setAttribute('fill', '#ffcc00');
+        sole.setAttribute('stroke', '#e6b800');
+        strap.setAttribute('fill', '#e6b800');
+        strap.setAttribute('stroke', '#b38f00');
+        holes.setAttribute('fill', '#3a2e00');
+      } else if (colorKey === 'cyan') {
+        sole.setAttribute('fill', '#00f0ff');
+        sole.setAttribute('stroke', '#00b8c4');
+        strap.setAttribute('fill', '#00b8c4');
+        strap.setAttribute('stroke', '#00808a');
+        holes.setAttribute('fill', '#00363a');
+      } else if (colorKey === 'gold') {
+        sole.setAttribute('fill', '#f59e0b');
+        sole.setAttribute('stroke', '#d97706');
+        strap.setAttribute('fill', '#fbbf24');
+        strap.setAttribute('stroke', '#d97706');
+        holes.setAttribute('fill', '#451a03');
+      } else if (colorKey === 'black') {
+        sole.setAttribute('fill', '#1e293b');
+        sole.setAttribute('stroke', '#0f172a');
+        strap.setAttribute('fill', '#334155');
+        strap.setAttribute('stroke', '#1e293b');
+        holes.setAttribute('fill', '#020617');
+      }
+
+      const selectElem = document.getElementById('modalColorSelect');
+      if (selectElem) selectElem.value = colorKey;
+    }
+
+    // Function to update ROI Calculator
+    function updateROICalculator(val) {
+      const amount = parseInt(val);
+      document.getElementById('investmentVal').innerText = '$' + amount.toLocaleString() + ' USD';
+      
+      const profit = amount * 999;
+      const happiness = amount * 9.9;
+      const slippers = Math.floor(amount / 100);
+
+      document.getElementById('roiProfit').innerText = '$' + profit.toLocaleString() + ' USD';
+      document.getElementById('roiHappiness').innerText = '+' + happiness.toLocaleString() + ' %';
+      document.getElementById('roiSlippers').innerText = slippers + ' Đôi Lượng Tử';
+    }
+
+    // Modal Control Logic
+    function openModal(type) {
+      playSound(500, 'sine');
+      const modal = document.getElementById('modalBackdrop');
+      const orderContent = document.getElementById('modalOrderContent');
+      const investContent = document.getElementById('modalInvestContent');
+
+      modal.classList.remove('hidden');
+
+      if (type === 'order') {
+        orderContent.classList.remove('hidden');
+        investContent.classList.add('hidden');
+      } else {
+        orderContent.classList.add('hidden');
+        investContent.classList.remove('hidden');
+      }
+    }
+
+    function closeModal() {
+      playSound(300, 'sine');
+      document.getElementById('modalBackdrop').classList.add('hidden');
+    }
+
+    // Form submission handler
+    function handleFormSubmit(e, type) {
+      e.preventDefault();
+      closeModal();
+      playSound(900, 'square');
+
+      const toast = document.getElementById('toast');
+      const title = document.getElementById('toastTitle');
+      const msg = document.getElementById('toastMessage');
+
+      if (type === 'order') {
+        title.innerText = 'ĐẶT HÀNG THÀNH CÔNG!';
+        msg.innerText = 'Đơn hàng Dép Quantum-X đã được ghi nhận. Chip GPS sẽ kích hoạt khi giao hàng!';
+      } else {
+        title.innerText = 'CẢM ƠN NHÀ ĐẦU TƯ THIÊN SỨ!';
+        msg.innerText = 'Cam kết rót vốn đã được ghi nhận. Đội ngũ Ban Giám Đốc sẽ liên hệ gửi cổ phiếu!';
+      }
+
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Web Audio Synthesizer (No external audio needed)
+    let audioCtx = null;
+    let soundEnabled = false;
+
+    function toggleAudio() {
+      soundEnabled = !soundEnabled;
+      const icon = document.getElementById('soundIcon');
+      if (soundEnabled) {
+        icon.className = 'fas font-solid fa-volume-high text-cyan-400';
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        playSound(880, 'sine');
+      } else {
+        icon.className = 'fas font-solid fa-volume-xmark text-slate-500';
+      }
+    }
+
+    function playSound(freq, type = 'sine') {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.3);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  </script>
+</body>
+</html>
